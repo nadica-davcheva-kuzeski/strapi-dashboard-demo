@@ -251,3 +251,29 @@ export async function fetchInvoiceById(id: string) {
     throw new Error("Failed to fetch all customers.");
   }
 }
+
+export async function fetchStatistics() {
+  const authToken = cookies().get("jwt")?.value;
+  if (!authToken) return redirect("/login");
+
+  noStore();
+
+  const query = qs.stringify({
+    populate: {
+      fields: ["id", "text", "value"],
+    },
+  });
+
+  try {
+    const response = await fetch(STRAPI_URL + "/api/statistics?" + query, {
+      headers: { Authorization: "Bearer " + authToken },
+    });
+
+    const data = await response.json();
+    const flattened = flattenAttributes(data.data);
+    return { data: flattened, meta: data.meta };
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to load statistics.");
+  }
+}

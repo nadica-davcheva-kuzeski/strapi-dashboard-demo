@@ -27,7 +27,7 @@ export default async function LatestInvoices() {
               >
                 <div className="flex items-center">
                   <Image
-                    src={"http://localhost:1337" + invoice.customer.image.url}
+                    src={"http://127.0.0.1:1337" + invoice.customer.image.url}
                     className="mr-4 rounded-full"
                     width={32}
                     height={32}

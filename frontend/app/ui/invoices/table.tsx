@@ -25,7 +25,7 @@ export default async function InvoicesTable({
                       <div className="mb-2 flex items-center">
                         <Image
                           src={
-                            "http://localhost:1337" + invoice.customer.image.url
+                            "http://127.0.0.1:1337" + invoice.customer.image.url
                           }
                           className="mr-2 rounded-full"
                           width={28}
@@ -88,7 +88,7 @@ export default async function InvoicesTable({
                     <div className="flex items-center gap-3">
                       <Image
                         src={
-                          "http://localhost:1337" + invoice.customer.image.url
+                          "http://127.0.0.1:1337" + invoice.customer.image.url
                         }
                         className="rounded-full"
                         width={28}

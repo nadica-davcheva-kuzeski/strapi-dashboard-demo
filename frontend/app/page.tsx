@@ -25,9 +25,11 @@ export default async function Page() {
 					<p className="mt-4 text-gray-400">No data available.</p>
 				)}
 			</Suspense>
-			{cardData.data?.map((stat: any) => (
-				<Card key={stat.id} title={stat.text} value={stat.value} />
-			))}
+			<div className="p-10">
+				{cardData.data?.map((stat: any) => (
+					<Card key={stat.id} title={stat.text} value={stat.value} />
+				))}
+			</div>
 		</main>
 	);
 }

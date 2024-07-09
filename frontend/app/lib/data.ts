@@ -254,7 +254,17 @@ export async function fetchInvoiceById(id: string) {
 
 export async function fetchLandingPageData() {
   try {
-    const data = await fetch(STRAPI_URL + "/api/landing-page");
+    const query = qs.stringify({
+      populate: {
+        banner: {
+          populate: {
+            fields: ["title", "description"],
+          },
+        },
+      },
+    });
+
+    const data = await fetch(STRAPI_URL + "/api/landing-page?" + query);
     const landingPage = await data.json();
     const flatten = flattenAttributes(landingPage.data);
     return flatten;

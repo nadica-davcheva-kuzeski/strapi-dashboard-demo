@@ -752,12 +752,13 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
     singularName: 'landing-page';
     pluralName: 'landing-pages';
     displayName: 'Landing Page';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Header: Attribute.String;
+    banner: Attribute.Component<'banner.banner'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

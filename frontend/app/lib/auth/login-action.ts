@@ -1,4 +1,3 @@
-
 "use server";
 
 import { cookies } from "next/headers";
@@ -11,10 +10,10 @@ const formSchema = z.object({
 });
 
 export async function loginAction(prevState: any, formData: any) {
-	const STRAPI_URL = process.env.STRAPI_URL;
-	console.log("STRAPI_URL", STRAPI_URL);
-	if (!STRAPI_URL) throw new Error("Missing STRAPI_URL environment variable.");
-	const url = `${STRAPI_URL}/api/auth/local`;
+  const STRAPI_URL = process.env.STRAPI_URL;
+  console.log(STRAPI_URL);
+  if (!STRAPI_URL) throw new Error("Missing STRAPI_URL environment variable.");
+  const url = `${STRAPI_URL}/api/auth/local`;
 
 	const validatedFields = formSchema.safeParse({
 		identifier: formData.get("identifier"),
@@ -40,13 +39,13 @@ export async function loginAction(prevState: any, formData: any) {
 			cache: "no-cache",
 		});
 
-		const data = await response.json();
-		if (!response.ok && data.error)
-			return { ...prevState, message: data.error.message, errors: null };
-		if (response.ok && data.jwt) cookies().set("jwt", data.jwt);
-	} catch (error) {
-		console.log("error", error);
-		return { error: "Server error please try again later." };
-	}
-	redirect("/dashboard");
+    const data = await response.json();
+    if (!response.ok && data.error)
+      return { ...prevState, message: data.error.message, errors: null };
+    if (response.ok && data.jwt) cookies().set("jwt", data.jwt);
+  } catch (error) {
+    console.log(error);
+    return { error: "Server error please try again later." };
+  }
+  redirect("/dashboard");
 }

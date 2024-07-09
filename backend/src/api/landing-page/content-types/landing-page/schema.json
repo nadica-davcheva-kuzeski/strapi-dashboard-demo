@@ -4,18 +4,15 @@
   "info": {
     "singularName": "landing-page",
     "pluralName": "landing-pages",
-    "displayName": "Landing Page",
-    "description": ""
+    "displayName": "Landing Page"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "banner": {
-      "type": "component",
-      "repeatable": false,
-      "component": "banner.banner"
+    "Header": {
+      "type": "string"
     }
   }
 }

@@ -1,24 +1,24 @@
 {
   "kind": "collectionType",
-  "collectionName": "revenues",
+  "collectionName": "costs",
   "info": {
-    "singularName": "revenue",
-    "pluralName": "revenues",
-    "displayName": "Revenue",
+    "singularName": "cost",
+    "pluralName": "costs",
+    "displayName": "cost",
     "description": ""
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
     "date": {
       "type": "date"
     },
-    "month": {
+    "year": {
       "type": "string"
     },
-    "revenue": {
+    "cost": {
       "type": "integer"
     }
   }

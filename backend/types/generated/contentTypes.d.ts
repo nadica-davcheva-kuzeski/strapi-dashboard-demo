@@ -677,6 +677,31 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiCostCost extends Schema.CollectionType {
+  collectionName: 'costs';
+  info: {
+    singularName: 'cost';
+    pluralName: 'costs';
+    displayName: 'cost';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    date: Attribute.Date;
+    year: Attribute.String;
+    cost: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::cost.cost', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::cost.cost', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCustomerCustomer extends Schema.CollectionType {
   collectionName: 'customers';
   info: {
@@ -777,38 +802,6 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
   };
 }
 
-export interface ApiRevenueRevenue extends Schema.CollectionType {
-  collectionName: 'revenues';
-  info: {
-    singularName: 'revenue';
-    pluralName: 'revenues';
-    displayName: 'Revenue';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    date: Attribute.Date;
-    month: Attribute.String;
-    revenue: Attribute.Integer;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::revenue.revenue',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::revenue.revenue',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -825,10 +818,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::cost.cost': ApiCostCost;
       'api::customer.customer': ApiCustomerCustomer;
       'api::invoice.invoice': ApiInvoiceInvoice;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
-      'api::revenue.revenue': ApiRevenueRevenue;
     }
   }
 }

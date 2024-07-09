@@ -1,4 +1,9 @@
-import { fetchCosts, fetchLandingPageData } from "@/app/lib/data";
+import {
+	fetchCosts,
+	fetchLandingPageData,
+	fetchStatistics,
+} from "@/app/lib/data";
+import { Card } from "@/app/ui/card";
 import CostsChart from "@/app/ui/costs-chart";
 import { CostsChartSkeleton } from "@/app/ui/skeletons";
 import { Suspense } from "react";
@@ -6,6 +11,7 @@ import { Suspense } from "react";
 export default async function Page() {
 	const landingPageData = await fetchLandingPageData();
 	const costs = await fetchCosts();
+	const cardData = await fetchStatistics();
 
 	return (
 		<main className="flex min-h-screen flex-col">
@@ -19,6 +25,9 @@ export default async function Page() {
 					<p className="mt-4 text-gray-400">No data available.</p>
 				)}
 			</Suspense>
+			{cardData.data?.map((stat: any) => (
+				<Card key={stat.id} title={stat.text} value={stat.value} />
+			))}
 		</main>
 	);
 }

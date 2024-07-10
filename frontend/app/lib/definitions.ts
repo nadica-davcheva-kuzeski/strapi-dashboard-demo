@@ -16,7 +16,7 @@ export type Cost = {
 };
 
 export type Banner = {
-	header: string;
+	title: string;
 	description: string;
 };
 

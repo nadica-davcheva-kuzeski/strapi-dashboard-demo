@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * revenue router
+ * cost router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::revenue.revenue');
+module.exports = createCoreRouter('api::cost.cost');

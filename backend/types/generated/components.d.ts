@@ -5,10 +5,11 @@ export interface BannerBanner extends Schema.Component {
   info: {
     displayName: 'Banner';
     icon: 'file';
+    description: '';
   };
   attributes: {
-    Header: Attribute.String;
-    Description: Attribute.Text;
+    title: Attribute.String;
+    description: Attribute.Text;
   };
 }
 

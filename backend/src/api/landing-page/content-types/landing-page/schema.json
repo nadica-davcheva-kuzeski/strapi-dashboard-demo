@@ -12,12 +12,9 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Header": {
-      "type": "string"
-    },
     "banner": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "banner.banner"
     }
   }

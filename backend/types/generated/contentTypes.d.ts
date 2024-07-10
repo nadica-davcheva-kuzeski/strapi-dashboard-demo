@@ -714,8 +714,7 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    Header: Attribute.String;
-    banner: Attribute.Component<'banner.banner', true>;
+    banner: Attribute.Component<'banner.banner'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

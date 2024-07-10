@@ -2,14 +2,15 @@
   "collectionName": "components_banner_banners",
   "info": {
     "displayName": "Banner",
-    "icon": "file"
+    "icon": "file",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "Header": {
+    "title": {
       "type": "string"
     },
-    "Description": {
+    "description": {
       "type": "text"
     }
   }

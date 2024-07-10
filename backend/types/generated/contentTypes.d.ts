@@ -682,7 +682,7 @@ export interface ApiCostCost extends Schema.CollectionType {
   info: {
     singularName: 'cost';
     pluralName: 'costs';
-    displayName: 'cost';
+    displayName: 'Cost';
     description: '';
   };
   options: {
@@ -708,12 +708,14 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
     singularName: 'landing-page';
     pluralName: 'landing-pages';
     displayName: 'Landing Page';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     Header: Attribute.String;
+    banner: Attribute.Component<'banner.banner', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

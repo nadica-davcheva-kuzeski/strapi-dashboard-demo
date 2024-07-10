@@ -21,6 +21,11 @@
       "type": "component",
       "repeatable": false,
       "component": "article.article"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

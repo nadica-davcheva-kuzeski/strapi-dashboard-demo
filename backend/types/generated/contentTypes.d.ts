@@ -677,71 +677,27 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiCustomerCustomer extends Schema.CollectionType {
-  collectionName: 'customers';
+export interface ApiCostCost extends Schema.CollectionType {
+  collectionName: 'costs';
   info: {
-    singularName: 'customer';
-    pluralName: 'customers';
-    displayName: 'Customer';
+    singularName: 'cost';
+    pluralName: 'costs';
+    displayName: 'cost';
     description: '';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    email: Attribute.String;
-    image: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::customer.customer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::customer.customer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiInvoiceInvoice extends Schema.CollectionType {
-  collectionName: 'invoices';
-  info: {
-    singularName: 'invoice';
-    pluralName: 'invoices';
-    displayName: 'Invoice';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    customer: Attribute.Relation<
-      'api::invoice.invoice',
-      'oneToOne',
-      'api::customer.customer'
-    >;
-    amount: Attribute.Integer;
-    status: Attribute.Enumeration<['pending', 'paid']>;
     date: Attribute.Date;
+    year: Attribute.String;
+    cost: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::invoice.invoice',
-      'oneToOne',
-      'admin::user'
-    > &
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::cost.cost', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::invoice.invoice',
-      'oneToOne',
-      'admin::user'
-    > &
+    updatedBy: Attribute.Relation<'api::cost.cost', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -769,38 +725,6 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::landing-page.landing-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiRevenueRevenue extends Schema.CollectionType {
-  collectionName: 'revenues';
-  info: {
-    singularName: 'revenue';
-    pluralName: 'revenues';
-    displayName: 'Revenue';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    date: Attribute.Date;
-    month: Attribute.String;
-    revenue: Attribute.Integer;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::revenue.revenue',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::revenue.revenue',
       'oneToOne',
       'admin::user'
     > &
@@ -856,10 +780,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::customer.customer': ApiCustomerCustomer;
-      'api::invoice.invoice': ApiInvoiceInvoice;
+      'api::cost.cost': ApiCostCost;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
-      'api::revenue.revenue': ApiRevenueRevenue;
       'api::statistic.statistic': ApiStatisticStatistic;
     }
   }

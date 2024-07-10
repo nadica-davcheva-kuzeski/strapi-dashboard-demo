@@ -7,72 +7,25 @@ import { formatCurrency } from "./utils";
 
 const STRAPI_URL = process.env.STRAPI_URL;
 
-export async function fetchRevenue() {
-  const authToken = cookies().get("jwt")?.value;
-  if (!authToken) return redirect("/login");
-
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-
-  try {
-    const query = qs.stringify({
-      sort: ["date:asc"],
-      pagination: {
-        pageSize: 12,
-        page: 1,
-      },
-    });
-    const response = await fetch(STRAPI_URL + "/api/revenues?" + query, {
-      headers: { Authorization: "Bearer " + authToken },
-      cache: "no-store",
-    });
-    const data = await response.json();
-    const revenue = flattenAttributes(data.data);
-    return revenue;
-  } catch (error) {
-    console.error("Database Error:", error);
-    throw new Error("Failed to fetch revenue data.");
-  }
-}
-
-export async function fetchLatestInvoices() {
-  const authToken = cookies().get("jwt")?.value;
-  if (!authToken) return redirect("/login");
-
-  const query = qs.stringify({
-    sort: ["date:asc"],
-    populate: {
-      customer: {
-        populate: {
-          image: {
-            fields: ["url"],
-          },
-        },
-      },
-    },
-    pagination: {
-      pageSize: 5,
-      page: 1,
-    },
-  });
-
-  try {
-    const response = await fetch(STRAPI_URL + "/api/invoices?" + query, {
-      headers: { Authorization: "Bearer " + authToken },
-      cache: "no-store",
-    });
-    const data = await response.json();
-    const flattened = flattenAttributes(data.data);
-
-    const latestInvoices = flattened.map((invoice: any) => ({
-      ...invoice,
-      amount: formatCurrency(invoice.amount),
-    }));
-
-    return latestInvoices;
-  } catch (error) {
-    console.error("Database Error:", error);
-    throw new Error("Failed to fetch the latest invoices.");
-  }
+export async function fetchCosts() {
+	try {
+		const query = qs.stringify({
+			sort: ["date:asc"],
+			pagination: {
+				pageSize: 12,
+				page: 1,
+			},
+		});
+		const response = await fetch(STRAPI_URL + "/api/costs?" + query, {
+			cache: "no-store",
+		});
+		const data = await response.json();
+		const revenue = flattenAttributes(data.data);
+		return revenue;
+	} catch (error) {
+		console.error("Database Error:", error);
+		throw new Error("Failed to fetch revenue data.");
+	}
 }
 
 export async function fetchCardData() {

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * revenue service
+ * cost service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::revenue.revenue');
+module.exports = createCoreService('api::cost.cost');

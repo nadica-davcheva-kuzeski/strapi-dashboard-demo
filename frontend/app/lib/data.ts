@@ -10,6 +10,16 @@ export async function fetchLandingPageData() {
 				banner: {
 					populate: {
 						fields: ["title", "description"],
+						buttons: {
+							populate: {
+								fields: ["id", "name", "url"],
+							},
+						},
+					},
+				},
+				foundations: {
+					populate: {
+						fields: ["title", "description", "image"],
 					},
 				},
 			},

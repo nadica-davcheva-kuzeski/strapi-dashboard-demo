@@ -6,32 +6,76 @@ import {
 import { Card } from "@/app/ui/card";
 import CostsChart from "@/app/ui/costs-chart";
 import { CostsChartSkeleton } from "@/app/ui/skeletons";
+import Image from "next/image";
 import { Suspense } from "react";
 
 export default async function Page() {
-  const landingPageData = await fetchLandingPageData();
-  const costs = await fetchCosts();
-  const cardData = await fetchStatistics();
-
+	const landingPageData = await fetchLandingPageData();
+	const costs = await fetchCosts();
+	const cardData = await fetchStatistics();
+	console.log("landingPageData e", landingPageData);
 	return (
-		<main className="flex min-h-screen flex-col">
+		<>
 			{landingPageData && (
-				<div>
-					{landingPageData.banner.title} {landingPageData.banner.description}
+				<div className="bg-blue-600 w-full flex justify-center items-center py-16">
+					<div className="text-center max-w-3xl">
+						<h1 className="text-4xl text-white font-bold mb-4">
+							{landingPageData.banner.title}
+						</h1>
+						<p className="text-xl text-white mb-8">
+							{landingPageData.banner.description}
+						</p>
+						<div className="space-x-4">
+							{landingPageData.banner.buttons.map(({ id, name, url }) => (
+								<a
+									key={id}
+									href={url}
+									className="bg-white text-custom-blue  text-sm text-light py-2 px-4 rounded transition-all duration-300"
+								>
+									{name}
+								</a>
+							))}
+						</div>
+					</div>
 				</div>
 			)}
-			<Suspense fallback={<CostsChartSkeleton />}>
-				{costs && costs.length > 0 ? (
-					<CostsChart costs={costs} />
-				) : (
-					<p className="mt-4 text-gray-400">No data available.</p>
-				)}
-			</Suspense>
-			<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-				{cardData.data?.map((stat: any) => (
-					<Card key={stat.id} text={stat.text} value={stat.value} />
-				))}
+
+			<section className="container mx-auto flex-grow p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12">
+				<div className="flex flex-col md:flex-row items-center justify-between py-16 px-4 md:px-8 bg-custom-blue text-black">
+					<div className="md:w-1/2 mb-8 md:mb-0">
+						<h2 className="text-4xl font-bold mb-4">
+							{landingPageData.foundations.title}
+						</h2>
+						<p className="text-lg">{landingPageData.foundations.description}</p>
+					</div>
+					<div className="md:w-1/2">
+						<Image
+							src="/uploads/fondations_image_14c75ae476.webp"
+							alt="Descriptive Alt Text"
+							width={500}
+							height={300}
+							className="rounded-lg shadow-lg"
+						/>
+					</div>
+				</div>
+			</section>
+
+			<div className="container mx-auto flex-grow p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12">
+				<Suspense fallback={<CostsChartSkeleton />}>
+					{costs && costs.length > 0 ? (
+						<CostsChart costs={costs} />
+					) : (
+						<p className="mt-4 text-gray-400">No data available.</p>
+					)}
+				</Suspense>
 			</div>
-		</main>
+			<section className="w-full flex justify-center items-center bg-gray-50 py-16">
+				<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
+					{cardData.data?.map((stat: any) => (
+						<Card key={stat.id} text={stat.text} value={stat.value} />
+					))}
+				</div>
+			</section>
+		</>
 	);
 }

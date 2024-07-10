@@ -1,6 +1,5 @@
 import { Cost } from "@/app/lib/definitions";
 import { generateYAxis } from "@/app/lib/utils";
-import { CalendarIcon } from "@heroicons/react/24/outline";
 
 interface CostsChartProps {
 	costs: Cost[];
@@ -40,10 +39,6 @@ export default function CostsChart({ costs }: CostsChartProps) {
 							</p>
 						</div>
 					))}
-				</div>
-				<div className="flex items-center pb-2 pt-6">
-					<CalendarIcon className="h-5 w-5 text-gray-500" />
-					<h3 className="ml-2 text-sm text-gray-500 ">Last 12 months</h3>
 				</div>
 			</div>
 		</div>

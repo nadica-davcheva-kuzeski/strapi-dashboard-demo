@@ -52,7 +52,7 @@ export async function fetchCosts() {
 		return revenue;
 	} catch (error) {
 		console.error("Database Error:", error);
-		throw new Error("Failed to fetch revenue data.");
+		throw new Error("Failed to fetch costs data.");
 	}
 }
 
@@ -73,6 +73,6 @@ export async function fetchStatistics() {
 		return { data: flattened, meta: data.meta };
 	} catch (error) {
 		console.error("Database Error:", error);
-		throw new Error("Failed to load statistics.");
+		throw new Error("Failed to load statistics data.");
 	}
 }

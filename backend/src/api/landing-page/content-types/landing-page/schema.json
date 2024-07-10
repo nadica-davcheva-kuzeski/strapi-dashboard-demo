@@ -16,6 +16,11 @@
       "type": "component",
       "repeatable": false,
       "component": "banner.banner"
+    },
+    "foundations": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.article"
     }
   }
 }

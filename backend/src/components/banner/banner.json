@@ -12,6 +12,11 @@
     },
     "description": {
       "type": "text"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "button.button"
     }
   }
 }

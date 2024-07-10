@@ -50,7 +50,7 @@ export default async function Page() {
 					</div>
 					<div className="md:w-1/2">
 						<Image
-							src="/uploads/fondations_image_14c75ae476.webp"
+							src="https://westhealth.org/wp-content/uploads/2024/01/Homepage-OurApproach-Hero-750x582-1.jpg"
 							alt="Descriptive Alt Text"
 							width={500}
 							height={300}

@@ -19,7 +19,12 @@ export async function fetchLandingPageData() {
 				},
 				foundations: {
 					populate: {
-						fields: ["title", "description", "image"],
+						fields: ["title", "description"],
+						image: {
+							populate: {
+								fields: ["id", "name", "url"],
+							},
+						},
 					},
 				},
 			},

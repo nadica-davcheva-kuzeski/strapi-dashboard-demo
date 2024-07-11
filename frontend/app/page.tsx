@@ -40,7 +40,6 @@ export default async function Page() {
 					</div>
 				</div>
 			)}
-
 			<section className="container mx-auto flex-grow p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12">
 				<div className="flex flex-col md:flex-row items-center justify-between gap-8 py-16 px-4 md:px-8 bg-custom-blue text-black">
 					<div className="md:w-1/2 mb-8 md:mb-0">
@@ -71,13 +70,32 @@ export default async function Page() {
 				</div>
 			</section>
 			<section className="container mx-auto flex-grow p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12">
-				<Suspense fallback={<CostsChartSkeleton />}>
-					{costs && costs.length > 0 ? (
-						<CostsChart costs={costs} />
-					) : (
-						<p className="mt-4 text-gray-400">No data available.</p>
-					)}
-				</Suspense>
+				<div className="flex flex-col md:flex-row items-center justify-between gap-8 py-16 px-4 md:px-8 bg-custom-blue text-black">
+					<div className="md:w-1/2 mb-8 md:mb-0">
+						<Suspense fallback={<CostsChartSkeleton />}>
+							{costs && costs.length > 0 ? (
+								<CostsChart costs={costs} />
+							) : (
+								<p className="mt-4 text-gray-400">No data available.</p>
+							)}
+						</Suspense>
+					</div>
+					<div className="md:w-1/2">
+						<h2 className="text-4xl font-bold text-left mb-4">
+							2024 Healthcare in America Report: 3 in 4 Americans Under 65 are
+							Worried About Future of Medicare
+						</h2>
+						<p className="text-lg">
+							Concerns over the potential insolvency of Medicare among those
+							under 65 have risen, with 73% now expressing worry that it won’t
+							be available when they need it, up from 67% in 2022, according to
+							the new West Health-Gallup 2024 Survey on Aging in America. Worry
+							rose most amongst those aged 50 to 64, up 13 percentage points to
+							74%. Higher percentages of adult’s express concern about the
+							future of Soc
+						</p>
+					</div>
+				</div>
 			</section>
 		</>
 	);

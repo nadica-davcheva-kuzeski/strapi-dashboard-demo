@@ -717,6 +717,7 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
     banner: Attribute.Component<'banner.banner'>;
     foundations: Attribute.Component<'article.article'>;
     seo: Attribute.Component<'shared.seo'>;
+    report: Attribute.Component<'article.article'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

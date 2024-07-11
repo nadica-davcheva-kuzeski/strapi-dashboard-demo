@@ -27,6 +27,11 @@ export async function fetchLandingPageData() {
 						},
 					},
 				},
+				report: {
+					populate: {
+						fields: ["title", "description"],
+					},
+				},
 			},
 		});
 

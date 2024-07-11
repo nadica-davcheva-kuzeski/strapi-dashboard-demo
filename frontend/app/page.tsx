@@ -82,18 +82,9 @@ export default async function Page() {
 					</div>
 					<div className="md:w-1/2">
 						<h2 className="text-4xl font-bold text-left mb-4">
-							2024 Healthcare in America Report: 3 in 4 Americans Under 65 are
-							Worried About Future of Medicare
+							{landingPageData.report.title}
 						</h2>
-						<p className="text-lg">
-							Concerns over the potential insolvency of Medicare among those
-							under 65 have risen, with 73% now expressing worry that it won’t
-							be available when they need it, up from 67% in 2022, according to
-							the new West Health-Gallup 2024 Survey on Aging in America. Worry
-							rose most amongst those aged 50 to 64, up 13 percentage points to
-							74%. Higher percentages of adult’s express concern about the
-							future of Soc
-						</p>
+						<p className="text-lg">{landingPageData.report.description}</p>
 					</div>
 				</div>
 			</section>

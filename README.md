@@ -1,4 +1,4 @@
-Strapi + West Health  
+Strapi + West Health demo
 
 ## How To Get Started With The Project
 
@@ -100,41 +100,4 @@ You can checkout the scripts inside the `package.json` file in the root of your 
     "concurrently": "^8.2.2"
   }
 }
-
-```
-
-## Starting Both Projects
-
-You can start each project individually by running the following commands.
-
-In your terminal, change the directory to `backend` and run `yarn develop,` then, in a new terminal window, change the directory to `frontend` and run `yarn dev.`
-
-Navigate to `http://localhost:3000` and should see the following screen.
-You can find your Strapi app running on `http://localhost:1337`.
-
-You can also run both projects using **concurrently* to start both projects by running `yarn dev` at the root of your project.
-
-You can check out the scripts inside the `package.json` file at the root of your project.
-
-``` json
-{
-  "scripts": {
-    "frontend": "yarn dev --prefix ../frontend/",
-    "backend": "yarn dev --prefix ../backend/",
-    "clear": "cd frontend && rm -rf .next && rm -rf cache",
-    "setup:frontend": "cd frontend && yarn",
-    "setup:backend": "cd backend && yarn",
-    "setup": "yarn install && yarn setup:frontend && yarn setup:backend",
-    "dev": "yarn clear && concurrently \"cd frontend && yarn dev\" \"cd backend && yarn develop\"",
-    "seed": "cd backend && yarn strapi import -f ../seed-data.tar.gz",
-    "export": "cd backend && yarn strapi export --no-encrypt -f ../seed-data",
-    "repo:upstream": "git fetch upstream && git merge upstream/main"
-  },
-  "dependencies": {
-    "concurrently": "^8.2.2"
-  }
-}
-
-```
-
-Nice, we now have our project running.  Thank you for the support, and enjoy.  Show your support by giving us a star and sharing the repo.
+``` 

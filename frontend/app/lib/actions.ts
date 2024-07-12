@@ -153,3 +153,7 @@ export async function deleteInvoice(id: string) {
   }
   revalidatePath("/dashboard/invoices");
 }
+
+export async function setLanguage(lang: string) {
+  cookies().set("lang", lang);
+}

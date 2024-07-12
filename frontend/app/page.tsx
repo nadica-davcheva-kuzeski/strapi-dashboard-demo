@@ -1,19 +1,21 @@
 import {
-	fetchCosts,
-	fetchLandingPageData,
-	fetchStatistics,
+  fetchCosts,
+  fetchLandingPageData,
+  fetchStatistics,
 } from "@/app/lib/data";
 import { Card } from "@/app/ui/card";
 import CostsChart from "@/app/ui/costs-chart";
 import { CostsChartSkeleton } from "@/app/ui/skeletons";
+import { cookies } from "next/headers";
 import Image from "next/image";
 import { Suspense } from "react";
 const STRAPI_URL = process.env.STRAPI_URL;
 
 export default async function Page() {
-	const landingPageData = await fetchLandingPageData();
-	const costs = await fetchCosts();
-	const cardData = await fetchStatistics();
+  const locale = cookies().get("lang");
+  const landingPageData = await fetchLandingPageData(locale?.value || "en");
+  const costs = await fetchCosts();
+  const cardData = await fetchStatistics(locale?.value || "en");
 
 	return (
 		<>

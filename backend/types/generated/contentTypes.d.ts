@@ -713,10 +713,30 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    banner: Attribute.Component<'banner.banner'>;
-    foundations: Attribute.Component<'article.article'>;
-    seo: Attribute.Component<'shared.seo'>;
+    banner: Attribute.Component<'banner.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    foundations: Attribute.Component<'article.article'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     report: Attribute.Component<'article.article'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -733,6 +753,12 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::landing-page.landing-page',
+      'oneToMany',
+      'api::landing-page.landing-page'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -747,9 +773,24 @@ export interface ApiStatisticStatistic extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    text: Attribute.String;
-    value: Attribute.String;
+    text: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    value: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -765,6 +806,12 @@ export interface ApiStatisticStatistic extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::statistic.statistic',
+      'oneToMany',
+      'api::statistic.statistic'
+    >;
+    locale: Attribute.String;
   };
 }
 

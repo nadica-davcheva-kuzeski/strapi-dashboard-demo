@@ -737,6 +737,7 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
           localized: true;
         };
       }>;
+    report: Attribute.Component<'article.article'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

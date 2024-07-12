@@ -45,6 +45,11 @@
           "localized": true
         }
       }
+    },
+    "report": {
+      "type": "component",
+      "repeatable": false,
+      "component": "article.article"
     }
   }
 }

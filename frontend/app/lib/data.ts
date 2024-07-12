@@ -27,6 +27,11 @@ export async function fetchLandingPageData(locale: string) {
             },
           },
         },
+        report: {
+          populate: {
+            fields: ["title", "description"],
+          },
+        },
       },
       locale: locale,
     });
